@@ -92,6 +92,7 @@ namespace ns3 {
 		m_connected = false;
 		m_lastStartTime = Seconds (0);
 		m_totalBytes = 0;
+		m_totalPackets = 0;
 		m_activebursts = 0;
 		m_offPeriod = true;
 	}
@@ -105,6 +106,12 @@ namespace ns3 {
 	PPBPApplication::GetTotalBytes() const
 	{
 		return m_totalBytes;
+	}
+
+	uint32_t
+	PPBPApplication::GetTotalPackets() const
+	{
+		return m_totalPackets;
 	}
 
 	void
@@ -261,6 +268,7 @@ namespace ns3 {
 		m_txTrace (packet);
 		m_socket->Send (packet);
 		m_totalBytes += packet->GetSize();
+		m_totalPackets++;
 		m_lastStartTime = Simulator::Now();
 		ScheduleNextTx();
 	}

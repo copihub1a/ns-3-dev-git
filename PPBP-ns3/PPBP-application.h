@@ -104,6 +104,11 @@ namespace ns3 {
 		 */
 		uint32_t      GetTotalBytes() const;
 
+		/**
+		 * \brief Return total packets sent by this object.
+		 */
+		uint32_t      GetTotalPackets() const;
+
 	protected:
 		virtual void DoDispose ();
 
@@ -126,6 +131,7 @@ namespace ns3 {
 		bool            m_connected;					// True if connected
 
 		uint32_t        m_totalBytes;					// Total bytes sent so far
+		uint32_t		m_totalPackets;					// Total packets sent so far
 
 		Time            m_lastStartTime;				// Time last packet sent
 		EventId         m_startStopEvent;				// Event id for next start or stop event
